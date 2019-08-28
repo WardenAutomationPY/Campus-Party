@@ -7,6 +7,8 @@ detector = MTCNN()
 
 cap = cv2.VideoCapture(0)
 
+print('probando')
+
 def get_pixels(image):
     r, g, b = 0, 0, 0
     count = 0
