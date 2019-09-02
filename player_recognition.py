@@ -21,7 +21,7 @@ def get_pixels(image):
 
     return (r/count), (g/count), (b/count), count
 
-while False:
+while True:
     ret, frame = cap.read()
 
     detect_face = detector.detect_faces(frame)
@@ -39,25 +39,25 @@ while False:
 
 cv2.destroyAllWindows()
 
-min_YCrCb = np.array([0,133,77],np.uint8)
-max_YCrCb = np.array([235,173,127],np.uint8)
+# min_YCrCb = np.array([0,133,77],np.uint8)
+# max_YCrCb = np.array([235,173,127],np.uint8)
 
-rostro = cv2.imread("Rostro.jpg")
-rostroYCrCb = cv2.cvtColor(rostro,cv2.COLOR_BGR2YCR_CB)
-pielYCrCb = cv2.inRange(rostroYCrCb,min_YCrCb,max_YCrCb)
+# rostro = cv2.imread("Rostro.jpg")
+# rostroYCrCb = cv2.cvtColor(rostro,cv2.COLOR_BGR2YCR_CB)
+# pielYCrCb = cv2.inRange(rostroYCrCb,min_YCrCb,max_YCrCb)
 
-pielYCrCb = cv2.bitwise_and(rostro, rostro, mask = pielYCrCb)
+# pielYCrCb = cv2.bitwise_and(rostro, rostro, mask = pielYCrCb)
 
-color = ('r','g','b')
-for i,col in enumerate(color):
-    histr = cv2.calcHist([pielYCrCb],[i],None,[256],[0,256])
-    plt.plot(histr,color = col)
-    plt.xlim([0,256])
-    plt.ylim([0,500])
-#plt.show()
+# color = ('r','g','b')
+# for i,col in enumerate(color):
+#     histr = cv2.calcHist([pielYCrCb],[i],None,[256],[0,256])
+#     plt.plot(histr,color = col)
+#     plt.xlim([0,256])
+#     plt.ylim([0,500])
+# #plt.show()
 
-import scipy.misc
-print(scipy.misc.imread('ycrcb.png').mean(axis=(0,1)))
+# import scipy.misc
+# print(scipy.misc.imread('ycrcb.png').mean(axis=(0,1)))
 
 
 #cv2.imwrite("ycrcb.png", np.hstack([pielYCrCb]))
